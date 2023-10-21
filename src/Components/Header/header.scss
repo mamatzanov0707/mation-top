@@ -1,0 +1,63 @@
+@import "src/style/mixin";
+#header {
+  padding: 20px 0;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &--title {
+      h2 {
+       font-family: "Montserrat",sans-serif;
+        font-weight: 800;
+        font-size: 27.28px;
+        line-height: 33.25px;
+        letter-spacing: 0.3px;
+        color: #8F9BB3;
+      }
+    }
+    &--user {
+      h4 {
+        @include font;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 24px;
+        color: #222B45;
+      }
+      &__line {
+        border-bottom: 2px solid #8F9BB3;
+      }
+    }
+
+    &--acc {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+
+      &__group {
+        &--user {
+          h2 {
+            @include font;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            color: #222B45;
+          }
+        }
+        &--status {
+          p{
+            @include font;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            color: #8F9BB3;
+          }
+        }
+      }
+
+      &__row {
+
+      }
+
+    }
+  }
+}

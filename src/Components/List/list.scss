@@ -1,0 +1,63 @@
+@import "src/style/mixin";
+
+#list {
+  .list {
+    padding: 30px 0;
+
+    &--group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #E4E9F2;
+      height: 57px;
+
+      &__reg {
+        @include fio;
+        padding: 0 0 0 30px;
+
+        h3 {
+          @include text1;
+        }
+
+        &--logo {
+
+        }
+
+        &--dat {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          &__ic{
+            font-size: 8.33px;
+            color: #8F9BB3;
+          }
+        }
+
+        &--fio {
+
+        }
+      }
+
+      &__regs {
+        @include fio;
+        padding: 0 30px 0 0;
+
+        h3 {
+          @include text1;
+        }
+
+        &--work {
+
+        }
+
+        &--bod {
+          margin: 0 45px;
+        }
+
+        &--ros {
+
+        }
+      }
+    }
+  }
+}

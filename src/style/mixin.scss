@@ -1,0 +1,15 @@
+@mixin font{
+  font-family: "Open Sans",sans-serif;
+}
+@mixin fio{
+  display: flex;
+  gap: 60px;
+}
+@mixin text1{
+  @include font;
+  font-weight: 600 ;
+  font-size: 15px;
+  line-height: 24px;
+  color: #222B45;
+}
+
