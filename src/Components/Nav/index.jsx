@@ -4,13 +4,14 @@ import {AiOutlineMinus} from "react-icons/ai";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 
-const Nav = () => {
+const Nav = ({product}) => {
     const todo = useSelector(state => state.todo.todo)
+    console.log('todo', todo)
     return (
         <div id="nav">
             <div className="container">
                 <div className="nav">
-                    <div className="nav--title"><h1>Пользователи({todo.length})</h1></div>
+                    <form className="nav--title"><h1>Пользователи({product.length})</h1></form>
                     <div className="nav--group">
                         <div className="nav--group__search">
                             <input placeholder="    Найти пользователя по ФИО" type="search"/>

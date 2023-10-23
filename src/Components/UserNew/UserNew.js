@@ -5,31 +5,49 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {addSlick, addUser} from "../../store/Reducers/UserSlice";
 const UserNew = () => {
-    const [state, cetState] = useState([{
-        id:Date.now(),
-        name: "",
-        work: "",
-        weight: "",
-        height: "",
-        img:undefined,
-        data: new Date()
-    }])
-    const [error , setError] = useState(false)
-    const dispatch = useDispatch();
+    const [img, setImage] = useState("")
+    const [work, setWork] = useState("")
+    const [weight, setWeight] = useState("")
+    const [name, setName] = useState("")
+    const [height, setHeight] = useState("")
 
-    const handleSubmit = (e) => {
-        cetState({...state, [e.target.name]: e.target.value})
+    const HandWork = (e) =>{
+        setWork(e.target.value)
     }
-    const addPerson = () =>{
-        dispatch(addSlick(state))
+    const HandWeight = (e) =>{
+        setWeight(e.target.value)
     }
-    const [selectedImage, setSelectedImage] = useState(null);
+    const HandName = (e) =>{
+        setName(e.target.value)
+    }
+    const HandHeight = (e) =>{
+        setHeight(e.target.value)
+    }
+
+    const ReadFile = new FileReader()
+    ReadFile.onloadend = () => {
+        setImage(ReadFile.result)
+    }
+
     const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            setSelectedImage(URL.createObjectURL(file));
-        }
+        ReadFile.readAsDataURL(event.target.files[0])
     };
+
+    function addData (){
+        const obj = {
+            id:Date.now(),
+            name: name,
+            work: work,
+            weight: weight,
+            height: height,
+            img: img,
+            data: new Date()
+        }
+        let data = JSON.parse(localStorage.getItem('contact')) || []
+        data.push(obj)
+        localStorage.setItem('contact', JSON.stringify(data))
+    }
+
 
     return (
         <div id='user'>
@@ -50,36 +68,42 @@ const UserNew = () => {
                                 <h4>ФИО *</h4>
                                 <input
                                     name="name"
-                                    value={state.name} onChange={handleSubmit} type="text" placeholder='Баланчев Баланча Баланчаевич'
+                                    // value={state.name}
+                                    onChange={(e) => HandName(e)}  type="text" placeholder='Баланчев Баланча Баланчаевич'
                                 />
                             </div>
                             <div className='user--car__lina--help'>
                                 <h4>РАбота *</h4>
                                 <input
                                     name="work"
-                                    value={state.work}
-                                    onChange={handleSubmit} type="text" placeholder='Без работный'
+                                    // value={state.work}
+                                    onChange={(e) => HandWork(e)}
+                                     type="text" placeholder='Без работный'
                                 />
                             </div>
                             <div className='user--car__lina--hel'>
                                 <h4>вес тела *</h4>
                                 <input
                                     name="weight"
-                                    value={state.weight}
-                                    onChange={handleSubmit} type="text" placeholder='Введите особые отметки машины'
+                                    // value={state.weight}
+                                    onChange={(e) => HandWeight(e)}
+                                     type="text" placeholder='Введите особые отметки машины'
                                 />
                             </div>
                             <div className='user--car__lina--text'>
                                 <h4>рост *</h4>
                                 <input
                                     name="height"
-                                    value={state.height}
-                                    onChange={handleSubmit} type="text" placeholder='1.80'
+                                    // value={state.height}
+                                    onChange={(e) => HandHeight(e)}
+                                     type="text" placeholder='1.80'
                                 />
                             </div>
                             <div className='user--car__master'></div>
                                <div className='user--car__top'>
-                                   <button value={state} onClick={()=> addPerson() }>Добавить  ✔</button>
+                                   <button
+                                       // value={state}
+                                       onClick={()=> addData() }>Добавить  ✔</button>
                                </div>
                         </div>
                         <div className='user--main'>
@@ -88,7 +112,7 @@ const UserNew = () => {
                                 type="file"
                                 onChange={handleImageChange}
                             />
-                            <img value={state.img} onChange={handleSubmit} src={selectedImage} alt=""/>
+                            <img onChange={(e) => handleImageChange(e)} src={img} alt=""/>
                         </div>
                     </div>
 

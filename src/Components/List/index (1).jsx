@@ -3,7 +3,7 @@ import {AiOutlineDown} from "react-icons/ai";
 import LinaTop from "./LinaTop";
 import {useSelector} from "react-redux";
 
- const List = () => {
+ const List = ({setProduct , product}) => {
     return (
 
         <div className='container'>
@@ -32,7 +32,7 @@ import {useSelector} from "react-redux";
                     </tr>
                     </thead>
                     <tbody>
-                    <LinaTop />)
+                    <LinaTop setProduct={setProduct} product={product}/>
 
                     </tbody>
                 </table>

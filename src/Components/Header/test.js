@@ -3,12 +3,12 @@ import List from "../List/index (1)";
 import Header from "./index";
 import Nav from "../Nav";
 
-const Test = () => {
+const Test = ({setProduct , product}) => {
     return (
         <div>
           <Header/>
-          <Nav/>
-          <List/>
+          <Nav product={product}/>
+          <List setProduct={setProduct} product={product}/>
         </div>
     );
 };

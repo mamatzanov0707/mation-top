@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {BiSolidDownArrow} from "react-icons/bi";
 
 const Header = () => {
+
+
+
     return (
         <div id="header">
             <div className="container">
